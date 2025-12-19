@@ -15,9 +15,6 @@ def generate_random_book() -> BaseBook:
     genre = random.choice(GENRES)
     isbn = f'{random.randint(100, 999)}-{random.randint(1000, 9999)}'
 
-    if random.random() < 0.1:
-        year = -100
-
     type_choice = random.choice(['printed', 'audio', 'ebook'])
 
     match type_choice:

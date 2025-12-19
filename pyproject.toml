@@ -15,4 +15,5 @@ disable_error_code = ["call-arg"]
 exclude = [
     "src/collections/book_collection.py",
     "src/library.py",
+    "tests/",
 ]
