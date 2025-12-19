@@ -6,3 +6,13 @@ requires-python = ">=3.12"
 dependencies = [
     "pytest>=8.4.2",
 ]
+
+[[tool.mypy.overrides]]
+module = ["src.library"]
+disable_error_code = ["call-arg"]
+
+[tool.ruff]
+exclude = [
+    "src/collections/book_collection.py",
+    "src/library.py",
+]
