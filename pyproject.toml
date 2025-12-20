@@ -16,4 +16,5 @@ exclude = [
     "src/collections/book_collection.py",
     "src/library.py",
     "tests/",
+    "src/simulation.py/"
 ]

@@ -87,7 +87,7 @@ class Library:
         return len(self.books)
 
     def __iter__(self):
-        self._current_pose = 0
+        # self._current_pose = 0 FIXME БАГ 4
         return self
 
     def __next__(self) -> BaseBook:

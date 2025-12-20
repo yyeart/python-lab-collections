@@ -6,7 +6,7 @@ class BookCollection:
     """
     Списоквая коллекция для хранения списка книг библиотеки
     """
-    def __init__(self, items: list[BaseBook] | None = None):
+    def __init__(self, items: list[BaseBook] = []): # FIXME БАГ 5
         self._data: list[BaseBook] = items if items is not None else []
 
     def add(self, book: BaseBook) -> None:

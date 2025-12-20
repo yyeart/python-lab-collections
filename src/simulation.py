@@ -35,7 +35,7 @@ def generate_random_book() -> BaseBook:
                          file_size=random.uniform(1.0, 50.0),
                          file_format=random.choice(EBOOK_FORMATS))
         case 'printed':
-            return PrintedBook(title, author, year, genre, isbn,
+            return PrintedBook(author, title, year, genre, isbn, # FIXME БАГ 3
                                pages_count=random.randint(100, 1000),
                                weight=random.randint(200, 1500))
         case _:
@@ -56,6 +56,7 @@ def run_simulation(steps: int = 20, seed: int | None = None) -> None:
         random.seed(seed)
 
     lib = Library()
+    lib2 = Library()
 
     text = f'Начало симуляции (steps: {steps}, seed: {seed})'
     print(text)
@@ -85,8 +86,8 @@ def run_simulation(steps: int = 20, seed: int | None = None) -> None:
                     logger.info(text)
 
                 case 'remove':
-                    if len(lib) > 0:
-                        index = random.randint(0, len(lib) - 1)
+                    if len(lib) >= 0: # FIXME БАГ 2
+                        index = random.randint(0, len(lib)) # FIXME БАГ 1
                         book = lib.books[index]
                         lib.remove_book(book)
                         text += f'OK. Удалена {book}'
@@ -169,10 +170,14 @@ def run_simulation(steps: int = 20, seed: int | None = None) -> None:
     logger.info(text)
     print('Библиотека:')
     if len(lib) > 1:
-        print_slice = [book for book in lib.books[0:2]]
-        for book in print_slice:
-            print(book)
-        for book in lib.books[2:]:
-            print(book)
+        index = 0
+        for book in lib:
+            print(f'{index+1}.', book)
+            index += 1
+            if index == 3:
+                break
+        for book in lib:
+            print(f'{index+1}.', book)
+            index += 1
     elif len(lib) == 1:
         print(lib[0])
