@@ -2,6 +2,9 @@ from src.books.base import BaseBook
 from src.exceptions import BookValidationError
 
 class EBook(BaseBook):
+    """
+    Класс ,представляющий электронную книгу
+    """
     def __init__(self, title: str, author: str, year: int,
                  genre: str, isbn: str, file_size: float,
                  file_format: str):

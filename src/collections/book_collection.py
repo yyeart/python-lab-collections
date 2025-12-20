@@ -3,6 +3,9 @@ from src.exceptions import BookNotFoundError, LibraryIndexError
 from typing import Iterator
 
 class BookCollection:
+    """
+    Списоквая коллекция для хранения списка книг библиотеки
+    """
     def __init__(self, items: list[BaseBook] | None = None):
         self._data: list[BaseBook] = items if items is not None else []
 

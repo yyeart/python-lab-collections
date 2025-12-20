@@ -3,6 +3,9 @@ from abc import ABC, abstractmethod
 from src.exceptions import BookValidationError
 
 class BaseBook(ABC):
+    """
+    Абстрактный базовый класс с общей структурой книги
+    """
     def __init__(self, title: str, author: str, year: int, genre: str, isbn: str):
         self._validate(year, isbn)
         self.title = title

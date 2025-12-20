@@ -9,6 +9,12 @@ from src.library import Library
 
 
 def generate_random_book() -> BaseBook:
+    """
+    Генерирует книгу рандомного типа и заполняет необходимые поля конструктора рандомными(осмысленными) значениями
+
+    :return: Сгенерированная книга
+    :rtype: BaseBook
+    """
     title = random.choice(TITLES)
     author = random.choice(AUTHORS)
     year = random.choice(YEARS)

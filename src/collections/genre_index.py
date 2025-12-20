@@ -4,6 +4,9 @@ from src.exceptions import BookNotFoundError
 
 
 class GenreIndex(BaseIndex):
+    """
+    Индекс для группировки и поиска книг по жанру
+    """
     def add(self, book: BaseBook) -> None:
         if book.genre not in self._data:
             self._data[book.genre] = []

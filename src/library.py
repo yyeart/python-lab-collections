@@ -8,6 +8,9 @@ from src.exceptions import DuplicateBookError
 
 
 class Library:
+    """
+    Главный класс для работы с библиотекой
+    """
     def __init__(self):
         self.books = BookCollection()
         self.isbn_index = ISBNIndex()
@@ -17,6 +20,12 @@ class Library:
         self._current_pose = 0
 
     def add_book(self, book: BaseBook) -> None:
+        """
+        Добавляет новую книгу в библиотеку и обновляет все поисковые индексы
+
+        :param book: Объект книги
+        :type book: BaseBook
+        """
         if book.isbn in self.isbn_index:
             raise DuplicateBookError(f'Книга с таким ISBN ({book.isbn}) уже есть в библиотеке')
         self.books.add(book)
@@ -26,6 +35,12 @@ class Library:
         self.genre_index.add(book)
 
     def remove_book(self, book: BaseBook) -> None:
+        """
+        Удаляет книгу из библиотеки и соответствующих индексов
+
+        :param book: Объект книги
+        :type book: BaseBook
+        """
         self.books.remove(book)
         self.isbn_index.remove(book)
         self.author_index.remove(book)
@@ -33,15 +48,39 @@ class Library:
         self.genre_index.remove(book)
 
     def find_by_author(self, author: str):
+        """
+        Выполняет поиск книги по имени автора
+
+        :param author: Имя автора
+        :type author: str
+        """
         return self.author_index.get(author, [])
 
     def find_by_isbn(self, isbn: str):
+        """
+        Выполняет поиск книги по ее уникальному номеру ISBN
+
+        :param isbn: ISBN
+        :type isbn: str
+        """
         return self.isbn_index.get(isbn, None)
 
     def find_by_year(self, year: int):
+        """
+        Выполняет поиск книги по году издания
+
+        :param year: Год издания
+        :type year: int
+        """
         return self.year_index.get(year, [])
 
     def find_by_genre(self, genre: str):
+        """
+        Выполняет поиск книги по жанру
+
+        :param genre: Жанр
+        :type genre: str
+        """
         return self.genre_index.get(genre, [])
 
     def __len__(self) -> int:

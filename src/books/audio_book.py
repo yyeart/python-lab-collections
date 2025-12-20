@@ -2,6 +2,9 @@ from src.books.base import BaseBook
 from src.exceptions import BookValidationError
 
 class AudioBook(BaseBook):
+    """
+    Класс ,представляющий аудио книгу
+    """
     def __init__(self, title: str, author: str, year: int,
                  genre: str, isbn: str, duration: int,
                   bitrate: int, narrator: str):

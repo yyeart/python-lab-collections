@@ -3,6 +3,9 @@ from src.collections.base import BaseIndex
 from src.exceptions import BookNotFoundError
 
 class AuthorIndex(BaseIndex):
+    """
+    Индекс для группировки и поиска книг по имени автора
+    """
     def add(self, book: BaseBook) -> None:
         if book.author not in self._data:
             self._data[book.author] = []

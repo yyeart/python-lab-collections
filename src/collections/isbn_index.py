@@ -2,6 +2,9 @@ from src.books.base import BaseBook
 from src.collections.base import BaseIndex
 
 class ISBNIndex(BaseIndex):
+    """
+    Индекс для поиска книг по уникальному номеру ISBN
+    """
     def add(self, book: BaseBook) -> None:
         self._data[book.isbn] = book
 

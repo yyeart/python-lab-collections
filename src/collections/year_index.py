@@ -4,6 +4,9 @@ from src.exceptions import BookNotFoundError
 
 
 class YearIndex(BaseIndex):
+    """
+    Индекс для группировки и поиска книг по году издания
+    """
     def add(self, book: BaseBook) -> None:
         if book.year not in self._data:
             self._data[book.year] = []

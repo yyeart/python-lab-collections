@@ -4,6 +4,9 @@ from src.books.base import BaseBook
 from src.exceptions import LibraryIndexError
 
 class BaseIndex(ABC):
+    """
+    Абстрактный базовый класс для реализации словарных коллекций индексов
+    """
     def __init__(self):
         self._data = {}
 

@@ -2,6 +2,9 @@ from src.books.base import BaseBook
 from src.exceptions import BookValidationError
 
 class PrintedBook(BaseBook):
+    """
+    Класс ,представляющий печатную книгу
+    """
     def __init__(self, title: str, author: str, year: int,
                  genre: str, isbn: str, pages_count: int, weight: int):
         super().__init__(title, author, year, genre, isbn)
