@@ -135,5 +135,5 @@ def run_simulation(steps: int = 20, seed: int | None = None) -> None:
             print(book)
         for book in lib.books[2:]:
             print(book)
-    else:
+    elif len(lib) == 1:
         print(lib[0])

@@ -47,7 +47,7 @@ class Library:
     def __len__(self) -> int:
         return len(self.books)
 
-    def __iter__(self) -> Library:
+    def __iter__(self):
         self._current_pose = 0
         return self
 
@@ -60,7 +60,7 @@ class Library:
             self._current_pose = 0
             raise StopIteration
 
-    def __getitem__(self, index: int | slice) -> BaseBook | Library:
+    def __getitem__(self, index: int | slice):
         if isinstance(index, slice):
             return Library(self.books[index])
         return self.books[index]

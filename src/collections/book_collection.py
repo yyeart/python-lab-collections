@@ -21,7 +21,7 @@ class BookCollection:
     def __iter__(self) -> Iterator[BaseBook]:
         return iter(self._data)
 
-    def __getitem__(self, index: int | slice) -> BaseBook | BookCollection:
+    def __getitem__(self, index: int | slice):
         if isinstance(index, slice):
             return BookCollection(self._data[index])
         try:
