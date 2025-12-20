@@ -2,6 +2,7 @@ import unittest
 from unittest.mock import patch
 
 from src.books.printed_book import PrintedBook
+from src.library import Library
 from src.simulation import run_simulation
 
 def make_book(isbn='111-1111', year=2000):
@@ -55,3 +56,20 @@ class TestSimulation(unittest.TestCase):
         with patch('src.simulation.random.choice',
                    side_effect=['add', 'update_index']):
             run_simulation(steps=2, seed=1)
+
+    def test_update_index_detailed(self):
+        lib = Library()
+        book = make_book()
+        lib.add_book(book)
+        old_year_result = lib.find_by_year(2000)
+        self.assertIn(book, old_year_result)
+
+        lib.remove_book(book)
+        book.year = 2025
+        lib.add_book(book)
+
+        old_year_result = lib.find_by_year(2000)
+        self.assertNotIn(book, old_year_result)
+        actual_year_result = lib.find_by_year(2025)
+        self.assertIn(book, actual_year_result)
+        self.assertEqual(len(lib), 1)
